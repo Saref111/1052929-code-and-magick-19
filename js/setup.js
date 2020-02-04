@@ -17,10 +17,10 @@ var getRandomIndex = function (arrLength) {
   return Math.floor(Math.random() * arrLength);
 };
 
-var getWizardsObjects = function (wizardNames, wizardSurnames, wizardCoats, wizardEyes) {
+var getWizardsObjects = function (wizardNames, wizardSurnames, wizardCoats, wizardEyes, count) {
   var wizards = [];
 
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < count; i++) {
     wizards[i] = {};
 
     wizards[i].name = wizardNames[getRandomIndex(wizardNames.length)] + ' ' + wizardSurnames[getRandomIndex(wizardSurnames.length)];
@@ -50,6 +50,6 @@ var drawTemplates = function () {
   similarListElement.appendChild(fragment);
 };
 
-getWizardsObjects(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES);
+getWizardsObjects(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES, 4);
 
 drawTemplates();
