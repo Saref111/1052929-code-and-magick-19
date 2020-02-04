@@ -35,8 +35,9 @@ var getWizardsObjects = function (wizardNames, wizardSurnames, wizardCoats, wiza
 
 var drawTemplates = function () {
   var fragment = document.createDocumentFragment();
+  var wizards = getWizardsObjects(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES, 4);
 
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < wizards.length; i++) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
     wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
 
@@ -49,7 +50,5 @@ var drawTemplates = function () {
 
   similarListElement.appendChild(fragment);
 };
-
-getWizardsObjects(WIZARD_NAMES, WIZARD_SURNAMES, WIZARD_COATS, WIZARD_EYES, 4);
 
 drawTemplates();
