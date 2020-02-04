@@ -13,6 +13,9 @@ var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', '�
 var WIZARD_COATS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var WIZARD_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
 
+var getRandomIndex = function (arrLength) {
+  return Math.floor(Math.random() * arrLength);
+};
 
 var getWizardsObjects = function (wizardNames, wizardSurnames, wizardCoats, wizardEyes) {
   var wizards = [];
@@ -20,11 +23,11 @@ var getWizardsObjects = function (wizardNames, wizardSurnames, wizardCoats, wiza
   for (var i = 0; i < 4; i++) {
     wizards[i] = {};
 
-    wizards[i].name = wizardNames[Math.floor(Math.random() * wizardNames.length)] + ' ' + wizardSurnames[Math.floor(Math.random() * wizardSurnames.length)];
+    wizards[i].name = wizardNames[getRandomIndex(wizardNames.length)] + ' ' + wizardSurnames[getRandomIndex(wizardSurnames.length)];
 
-    wizards[i].coatColor = wizardCoats[Math.floor(Math.random() * wizardCoats.length)];
+    wizards[i].coatColor = wizardCoats[getRandomIndex(wizardCoats.length)];
 
-    wizards[i].eyesColor = wizardEyes[Math.floor(Math.random() * wizardEyes.length)];
+    wizards[i].eyesColor = wizardEyes[getRandomIndex(wizardEyes.length)];
   }
 
   return wizards;
