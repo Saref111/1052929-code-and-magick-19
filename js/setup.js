@@ -1,10 +1,32 @@
 'use strict';
 
 var userDialog = document.querySelector('.setup');
+var userAvatar = document.querySelector('.setup-open');
+var closeModalButton = userDialog.querySelector('.setup-close');
+
+var ESCAPE_KEY = 'Escape';
+var ENTER_KEY = 'Enter';
+
+var showWizards = function () {
+  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+};
 
 var showModal = function () {
   userDialog.classList.remove('hidden');
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+  document.addEventListener('keydown', popupEscHandler);
+};
+
+var hideModal = function () {
+  userDialog.classList.add('hidden');
+
+  document.removeEventListener('keydown', popupEscHandler);
+};
+
+var popupEscHandler = function (evt) {
+  if (evt.key === ESCAPE_KEY) {
+    hideModal();
+  }
 };
 
 var similarListElement = document.querySelector('.setup-similar-list');
@@ -51,7 +73,22 @@ var drawTemplates = function () {
   }
 
   similarListElement.appendChild(fragment);
+
+  showWizards();
 };
 
-showModal();
+
 drawTemplates();
+
+userAvatar.addEventListener('click', showModal);
+userAvatar.addEventListener('keydown', function (evt) {
+  if (evt.key === ENTER_KEY) {
+    showModal();
+  }
+});
+closeModalButton.addEventListener('click', hideModal);
+closeModalButton.addEventListener('keydown', function (evt) {
+  if (evt.key === ENTER_KEY) {
+    hideModal();
+  }
+});
