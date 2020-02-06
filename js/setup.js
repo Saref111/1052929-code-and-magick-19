@@ -3,6 +3,7 @@
 var userDialog = document.querySelector('.setup');
 var userAvatar = document.querySelector('.setup-open');
 var closeModalButton = userDialog.querySelector('.setup-close');
+var userNameInput = userDialog.querySelector('.setup-user-name');
 
 var ESCAPE_KEY = 'Escape';
 var ENTER_KEY = 'Enter';
@@ -24,8 +25,9 @@ var hideModal = function () {
 };
 
 var popupEscHandler = function (evt) {
-  if (evt.key === ESCAPE_KEY) {
+  if (evt.key === ESCAPE_KEY && evt.target !== userNameInput) {
     hideModal();
+    debugger;
   }
 };
 
