@@ -40,7 +40,6 @@
 
     return wizards;
   };
-  
 
   window.util = {
     isEscEvent: isEscEvent,
@@ -54,5 +53,5 @@
     WIZARD_FIREBALLS: WIZARD_FIREBALLS,
     MIN_NAME_LENGTH: MIN_NAME_LENGTH,
     getWizardsObjects: getWizardsObjects
-  }
+  };
 })();
