@@ -5,6 +5,14 @@
   var userAvatar = document.querySelector('.setup-open');
   var closeModalButton = userDialog.querySelector('.setup-close');
   var userNameInput = userDialog.querySelector('.setup-user-name');
+  var similarListElement = document.querySelector('.setup-similar-list');
+  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+  var wizardCoat = userDialog.querySelector('.wizard-coat');
+  var wizardEyes = userDialog.querySelector('.wizard-eyes');
+  var wizardFireball = userDialog.querySelector('.setup-fireball');
+  var wizardCoatInput = userDialog.querySelector('input[name="coat-color"]');
+  var wizardEyesInput = userDialog.querySelector('input[name="eyes-color"]');
+  var wizardFireballInput = userDialog.querySelector('input[name="fireball-color"]');
 
   var popupEscHandler = function (evt) {
     if (evt.target !== userNameInput) {
@@ -24,6 +32,32 @@
     document.removeEventListener('keydown', popupEscHandler);
   };
 
+  var showWizards = function () {
+    userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  };
+
+  var drawTemplates = function () {
+    var fragment = document.createDocumentFragment();
+    var wizards = window.util.getWizardsObjects(window.util.WIZARD_NAMES, window.util.WIZARD_SURNAMES, window.util.WIZARD_COATS, window.util.WIZARD_EYES, 4);
+
+    for (var i = 0; i < wizards.length; i++) {
+      var wizardElement = similarWizardTemplate.cloneNode(true);
+      wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
+
+      wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
+
+      wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+
+      fragment.appendChild(wizardElement);
+    }
+
+    similarListElement.appendChild(fragment);
+
+    showWizards();
+  };
+
+  drawTemplates();
+
   userAvatar.addEventListener('click', function () {
     showModal();
   });
@@ -34,5 +68,9 @@
 
   closeModalButton.addEventListener('click', function () {
     hideModal();
-  })
+  });
+
+  closeModalButton.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, hideModal);
+  });
 })();
