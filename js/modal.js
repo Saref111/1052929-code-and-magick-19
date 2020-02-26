@@ -7,12 +7,7 @@
   var userNameInput = userDialog.querySelector('.setup-user-name');
   var similarListElement = document.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-  var wizardCoat = userDialog.querySelector('.wizard-coat');
-  var wizardEyes = userDialog.querySelector('.wizard-eyes');
-  var wizardFireball = userDialog.querySelector('.setup-fireball');
-  var wizardCoatInput = userDialog.querySelector('input[name="coat-color"]');
-  var wizardEyesInput = userDialog.querySelector('input[name="eyes-color"]');
-  var wizardFireballInput = userDialog.querySelector('input[name="fireball-color"]');
+
 
   var popupEscHandler = function (evt) {
     if (evt.target !== userNameInput) {
