@@ -55,7 +55,7 @@
 
       var randomWizardsArr = [];
 
-      while (randomWizardsArr.length < 4 ) {
+      while (randomWizardsArr.length < 4) {
         randomWizardsArr.unshift(wizards[window.util.getRandomIndex(wizards.length)]);
       }
 
