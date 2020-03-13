@@ -5,10 +5,9 @@
   var userAvatar = document.querySelector('.setup-open');
   var closeModalButton = userDialog.querySelector('.setup-close');
   var userNameInput = userDialog.querySelector('.setup-user-name');
-  var similarListElement = document.querySelector('.setup-similar-list');
-  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
   var dialogHandle = userDialog.querySelector('.upload');
   var form = userDialog.querySelector('.setup-wizard-form');
+  var wizards = [];
 
   var popupEscHandler = function (evt) {
     if (evt.target !== userNameInput) {
@@ -46,27 +45,9 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  var loadHandler = function (wizards) {
-    var fragment = document.createDocumentFragment();
-
-    var randomWizardsArr = [];
-
-    while (randomWizardsArr.length < 4) {
-      randomWizardsArr.unshift(wizards[window.util.getRandomIndex(wizards.length)]);
-    }
-
-    for (var i = 0; i < randomWizardsArr.length; i++) {
-      var wizardElement = similarWizardTemplate.cloneNode(true);
-      wizardElement.querySelector('.setup-similar-label').textContent = randomWizardsArr[i].name;
-
-      wizardElement.querySelector('.wizard-coat').style.fill = randomWizardsArr[i].colorCoat;
-
-      wizardElement.querySelector('.wizard-eyes').style.fill = randomWizardsArr[i].colorEyes;
-
-      fragment.appendChild(wizardElement);
-    }
-
-    similarListElement.appendChild(fragment);
+  var loadHandler = function (data) {
+    window.modal.wizards = data;
+    window.colorize.update(window.modal.wizards);
   };
 
   var drawTemplates = function () {
@@ -147,4 +128,8 @@
     document.addEventListener('mousemove', moveModalHandler);
     document.addEventListener('mouseup', dropModalHandler);
   });
+
+  window.modal = {
+    wizards: wizards
+  };
 })();
