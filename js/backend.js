@@ -1,8 +1,8 @@
 'use strict';
 
 (function () {
-  var saveURL = 'https://js.dump.academy/code-and-magick';
-  var loadURL = 'https://js.dump.academy/code-and-magick/data';
+  var saveURL = 'https://javascript.pages.academy/code-and-magick';
+  var loadURL = 'https://javascript.pages.academy/code-and-magick/data';
 
   var save = function (data, loadSuccessHandler, errorHandler) {
     var xhr = new XMLHttpRequest();
